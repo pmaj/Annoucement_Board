@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if lastadverts %}
+        <div>
+            <h2>Adverts From Last 24 Hours</h2>
+        </div>
+        {% for lastadvert in lastadverts %}
+            <div class="panel panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <h4><a class="titleLink"
+                               href="{{ path('advert_show', {'id':lastadvert.id}) }}">{{ lastadvert.title }}</a>
+                        </h4></h3>
+                </div>
+                <div class="panel-body">
+                    {{ lastadvert.description}}
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-left">Author: {{ lastadvert.author }}</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-right">
+                                <span>Date of submition: {{ lastadvert.createDate|date('Y-m-d H:i') }}</span>
+                                <span><a type="button" class="btn btn-info" class="btn btn-primary btn-xs" href="{{ path('comment_new', {'id' : lastadvert.id}) }}">Comment</a></span>
+                                <a type="button" class="btn btn-info" href="{{ path('advert_delete', {"id" : lastadvert.id} ) }}">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+

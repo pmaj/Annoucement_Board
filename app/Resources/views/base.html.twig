@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        {% if form is defined %}
+            {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        {% endif %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <a href="{{ path('homepage') }}" class="navbar-brand">The New OLX</a>
+                            </div>
+                            <div>
+                                <ul class="nav navbar-nav">
+                                    <li><a href="{{ path('homepage') }}">Home</a></li>
+                                    {% if not is_granted('ROLE_USER') %}
+                                        <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                                        <li><a href="{{ path('fos_user_registration_register') }}"> Register</a></li>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_USER') %}
+                                        <li><a href="{{ path('advert_new') }}">Add New Advert</a></li>
+                                        <li>
+                                            <a href="{{ path('fos_user_profile_show') }}"><span class="glyphicon glyphicon-user"></span>Your profile</a>
+                                        </li>
+                                        {#<li>#}
+                                            {#<a href="{{ path('userAdv') }}"><span class="glyphicon glyphicon-inbox"></span> Your adverts</a>#}
+                                        {#</li>#}
+                                        <li>
+                                            <a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off"></span>Logout</a>
+                                        </li>
+                                    {% endif %}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <li><a href="{{ path('category_new') }}">Dodaj kategorię</a></li>
+                                    {% endif %}
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li>
+                                        <form class="navbar-form navbar-left" role="search" action="{{ path('search') }}">
+                                            <input type="text" class="form-control" name="search" placeholder="Search">
+                                            <button class="btn btn-info btn btn-primary btn-xs" type="submit" class="btn btn-default" style="">Submit</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    {{ render(controller('AppBundle:Category:categoryList')) }}
+                </div>
+
+                <div class="col-md-8">
+                    {% block body %}{% endblock %}
+                </div>
+                <div class="col-md-1">
+                    <h4>Znajdź nas:</h4>
+                    <p><a href=""><img src="https://www.facebook.com/images/fb_icon_325x325.png" width="100" height="100"></a></p><br/>
+                    <p><a href=""><img src="https://pbs.twimg.com/profile_images/786681705981673472/T5OKNZ1-.jpg" width="100" height="100"></a><br/></p><br/>
+                    <a href=""><img src="http://is3.mzstatic.com/image/thumb/Purple127/v4/7a/97/72/7a977261-5307-a9ee-fc61-d665751f0fab/source/1200x630bb.jpg" width="100" height="100"></a>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <h6 class="text-center">Created by Piotr Majchrzak</h6>
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
+
+
+{#{{ knp_menu_render('AppBundle:Builder:mainMenu') }}#}
+
+

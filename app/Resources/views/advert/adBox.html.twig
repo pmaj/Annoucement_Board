@@ -1,0 +1,31 @@
+
+<div class="panel panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <h4><a class="titleLink"
+                   href="{{ path('advert_show', {'id':advert.id}) }}">{{ advert.title }}</a>
+            </h4></h3>
+    </div>
+
+    <div class="panel-body">
+        {{ advert.description}}
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-left">Author: {{ advert.author }}</h5>
+            </div>
+
+            <div class="col-md-6">
+                <div class="text-right">
+                    <span>Date of submition: {{ advert.createDate|date('Y-m-d H:i:s') }}</span> <br>
+                    <span><a type="button" class="btn btn-info" class="btn btn-primary btn-xs" href="{{ path('comment_new', {'id' : advert.id}) }}">Comment</a></span>
+                    {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+                    <span></span><a type="button" class="btn btn-warning" class="btn btn-primary btn-xs" href="{{ path('advert_edit', {'id':advert.id}) }}">Edit</a><span></span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

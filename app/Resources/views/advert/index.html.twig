@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Adverts list</h1>
+
+
+    <div>
+        {% for advert in adverts %}
+            {% include 'advert/adBox.html.twig' %}
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
+
+    {#</div>#}
+{#<table class="table">#}
+    {#<div class="container">#}
+
+        {#<thead>#}
+        {#<tr>#}
+            {#<th>Id</th>#}
+            {#<th>Title</th>#}
+            {#<th>Description</th>#}
+            {#<th>Enddate</th>#}
+            {#<th>Createdate</th>#}
+            {#<th>Author</th>#}
+            {#<th>Actions</th>#}
+        {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+        {#{% for advert in adverts %}#}
+            {#<tr>#}
+                {#<td><a href="{{ path('advert_show', { 'id': advert.id }) }}">{{ advert.id }}</a></td>#}
+                {#<td>{{ advert.title }}</td>#}
+                {#<td>{{ advert.description }}</td>#}
+                {#<td>{% if advert.endDate %}{{ advert.endDate|date('Y-m-d') }}{% endif %}</td>#}
+                {#<td>{% if advert.createDate %}{{ advert.createDate|date('Y-m-d H:i:s') }}{% endif %}</td>#}
+                {#<td>{{ advert.author }}</td>#}
+                {#<td>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('advert_show', { 'id': advert.id }) }}">show</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('advert_edit', { 'id': advert.id }) }}">edit</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('comment_new', {'id': advert.id }) }}">Dodaj komentarz</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</div>#}
+{#</table>#}
+
+{#<ul>#}
+    {#<li>#}
+        {#<a href="{{ path('advert_new') }}">Create a new advert</a>#}
+    {#</li>#}
+{#</ul>#}

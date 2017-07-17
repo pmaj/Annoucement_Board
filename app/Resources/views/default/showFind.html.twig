@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Advertisements list</h1>
+
+    <div>
+        {% for advert in advertisments %}
+            {% include 'advert/adBox.html.twig' %}
+        {% endfor %}
+    </div>
+{% endblock %}

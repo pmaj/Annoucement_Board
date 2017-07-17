@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'advert/adBox.html.twig' %}
+    <hr />
+
+    <h1>Comment creation</h1>
+
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    <div class="text-right">
+        <input class="btn btn-info" class="btn btn-default btn-xs" style="width: 225px" type="submit" value="Create" />
+    </div>
+    {{ form_end(form) }}
+
+    <div class="text-right">
+        <a type="button" class="btn btn-info" class="btn btn-default btn-xs" style="width: 225px" href="{{ path('comment_show', {'id' : advert.id}) }}">Back to the list</a>
+    </div>
+    <hr/>
+
+
+    {% for adcomment in comments %}
+        {%   include 'comment/commBox.html.twig' %}
+        <hr/>
+    {% endfor %}
+{% endblock %}
+        {#<table class="table table-striped">#}
+            {#<tbody>#}
+                {#<tr>#}
+                    {#<th>Comment Author:</th>#}
+                    {#<td>{{ adcomment.author }}</td>#}
+                {#</tr>#}
+                {#<tr>#}
+                    {#<th>Comment</th>#}
+                    {#<td>{{ adcomment.comment }}</td>#}
+                {#</tr>#}
+
+            {#</tbody>#}
+        {#</table>#}

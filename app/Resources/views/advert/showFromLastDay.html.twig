@@ -1,0 +1,9 @@
+{% if adverts %}
+        <h2>Adverts From Last 24 Hours</h2>
+
+        {% for lastadvert in lastadverts %}
+            {{ lastadvert.name }}
+        {% endfor %}
+{% endif %}
+
+{#{{ render(controller('AppBundle:Advert:showFromDay')) }}#}

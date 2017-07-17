@@ -1,0 +1,24 @@
+
+<div class="panel panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <h4><a class="titleLink">
+                        {{ adcomment.comment}}
+            </h4></h3>
+    </div>
+    <div class="panel-footer ">
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-left">Author: {{ adcomment.author }}</h5>
+            </div>
+
+            <div class="col-md-6">
+                <div class="text-right">
+                    <span>Date of submition: {{ adcomment.commentDate|date('Y-m-d H:i') }}</span>
+                    <a type="button" class="btn btn-warning" class="btn btn-primary btn-xs" href="{{ path('comment_edit', {'id':adcomment.id}) }}">Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

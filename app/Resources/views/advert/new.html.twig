@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Advert creation</h1>
+        {{ form_start(form) }}
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title) }}
+            {#{% if is_granted('ROLE_USER') %}#}
+            {#{% else %}#}
+            {#{{ form_label(form.author) }}#}
+            {#{{ form_widget(form.author) }}#}
+            {#{% endif %}#}
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description) }}
+            {{ form_label(form.endDate) }}
+            {{ form_widget(form.endDate) }}
+            {{ form_label(form.photo) }}
+            {{ form_widget(form.photo) }}
+            {{ form_label(form.category) }}
+            {{ form_widget(form.category) }}
+            <div class="text-right">
+                <input type="submit" value="Create" />
+        {{ form_end(form) }}
+            </div>
+            <div class="text-right">
+                <a type="button" class="btn btn-info" style="width: 250px" class="btn btn-primary btn-xs" href="{{ path('advert_index') }}">Back to the list</a>
+            </div>
+{% endblock %}
