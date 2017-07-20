@@ -48,10 +48,6 @@ class AdvertController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-//            $file = $advert->getPhoto();
-//            $fileName = uniqid(). '.' .$file->guessExtension();
-//            $file->move($this->getParameter('brochures_directory'),
-//                $fileName);
             $date = new \DateTime('now');
             $advert->setCreateDate($date);
             if ($this->getUser('username') == null){

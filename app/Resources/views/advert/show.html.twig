@@ -1,32 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {#<h1>Advert</h1>#}
-
-        {#<table class="table">#}
-            {#<tbody>#}
-                {#<tr>#}
-                    {#<th>Id</th>#}
-                    {#<td>{{ advert.id }}</td>#}
-                {#</tr>#}
-                {#<tr>#}
-                    {#<th>Title</th>#}
-                    {#<td>{{ advert.title }}</td>#}
-                {#</tr>#}
-                {#<tr>#}
-                    {#<th>Description</th>#}
-                    {#<td>{{ advert.description }}</td>#}
-                {#</tr>#}
-                {#<tr>#}
-                    {#<th>Enddate</th>#}
-                    {#<td>{% if advert.endDate %}{{ advert.endDate|date('Y-m-d') }}{% endif %}</td>#}
-                {#</tr>#}
-                {#<tr>#}
-                    {#<th>Author</th>#}
-                    {#<td>{{ advert.author }}</td>#}
-                {#</tr>#}
-            {#</tbody>#}
-        {#</table>#}
     {% include 'advert/adBox.html.twig' %}
 
     <ul>
